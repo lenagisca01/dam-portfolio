@@ -60,24 +60,6 @@ Proiect „Informații despre build”, profil `preview` în `eas.json` care pro
 **Concepte:** EAS Build, APK vs AAB, versionare, variabile de mediu.
 - Video: [lab11.webm](./videos/lab11.webm) · Snack: [link](https://snack.expo.dev/@elana1/e15e18) · APK: [link](APK_LAB11) · Cod: [lab11/](./lab11)
 
----
 
-## Structura depozitoriului
-```
-.
-├── README.md
-├── lab04/      (App.js, navigation/, screens/ ...)
-├── lab05/
-├── lab06/
-├── lab07/
-├── lab08/
-├── lab09/
-├── lab10/
-├── lab11/
-├── videos/                 (lab04.mp4 ... lab11.webm)
-└── archives/               (lab04.zip ... lab11.zip)
-```
 
-## Rulare
-1. Deschide link-ul Snack al laboratorului (tab-ul **Web** sau **My Device** cu Expo Go).
-2. Sau local: `npm install` → `npx expo start`.
+

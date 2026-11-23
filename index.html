@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portofoliu DAM — Dezvoltarea aplicațiilor mobile</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --card:#fff; --text:#0b1f3a; --muted:#5a6b7b;
+    --accent:#1c7293; --accent-2:#0b1f3a; --line:#e3e9f0; --chip:#eaf6fc;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0b1220; --card:#121c2e; --text:#e8eef6; --muted:#9db0c4;
+           --accent:#4cc3e8; --accent-2:#e8eef6; --line:#22304a; --chip:#16263d; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+       background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:var(--accent)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+  /* header */
+  nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);
+      backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+  nav b{font-size:15px}
+  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-size:14px}
+  nav a{text-decoration:none;color:var(--muted)}
+  nav a:hover{color:var(--accent)}
+  @media(max-width:640px){nav ul{display:none}}
+
+  .hero{padding:72px 0 48px}
+  .hero .tag{display:inline-block;background:var(--chip);color:var(--accent);
+             padding:4px 12px;border-radius:99px;font-size:13px;font-weight:600}
+  .hero h1{font-size:clamp(32px,6vw,54px);line-height:1.1;margin:16px 0 12px}
+  .hero p{max-width:640px;color:var(--muted);font-size:18px;margin:0 0 24px}
+  .stack{display:flex;flex-wrap:wrap;gap:8px}
+  .stack span{border:1px solid var(--line);background:var(--card);padding:4px 12px;
+              border-radius:8px;font-size:13px}
+
+  h2.section{font-size:26px;margin:48px 0 20px}
+
+  /* filter */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .filters button{border:1px solid var(--line);background:var(--card);color:var(--text);
+                  padding:6px 14px;border-radius:99px;cursor:pointer;font-size:14px}
+  .filters button.on{background:var(--accent-2);color:var(--bg);border-color:var(--accent-2)}
+
+  /* cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+        display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(11,31,58,.12)}
+  .media{aspect-ratio:16/9;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+         display:flex;align-items:center;justify-content:center;color:#fff;position:relative}
+  .media video{width:100%;height:100%;object-fit:cover;background:#000}
+  .media .num{font-size:56px;font-weight:800;opacity:.9}
+  .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .body h3{margin:0;font-size:18px}
+  .body p{margin:0;color:var(--muted);font-size:14.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chips span{background:var(--chip);color:var(--accent);padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+  .links a{text-decoration:none;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;
+           border:1px solid var(--line);color:var(--text)}
+  .links a.primary{background:var(--accent-2);color:var(--bg);border-color:var(--accent-2)}
+  .links a:hover{border-color:var(--accent)}
+  .links a.off{opacity:.45;pointer-events:none}
+
+  footer{margin:64px 0 32px;padding-top:24px;border-top:1px solid var(--line);
+         color:var(--muted);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <b>DAM · Portofoliu</b>
+    <ul><li><a href="#labs">Laboratoare</a></li><li><a href="#about">Despre</a></li></ul>
+  </div>
+</nav>
+
+<header class="wrap hero" id="about">
+  <span class="tag">Dezvoltarea aplicațiilor mobile</span>
+  <h1>Portofoliu de laboratoare</h1>
+  <p>Opt aplicații React Native / Expo: de la consumul unui API public până la un APK instalabil. Fiecare proiect are video de demonstrație, link Snack și cod sursă.</p>
+  <div class="stack">
+    <span>React Native</span><span>Expo</span><span>React Navigation</span>
+    <span>AsyncStorage</span><span>SecureStore</span><span>Context API</span><span>EAS Build</span>
+  </div>
+</header>
+
+<main class="wrap" id="labs">
+  <h2 class="section">Laboratoare</h2>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="wrap">
+  <!-- MODIFICĂ: numele și grupa -->
+  Nume Prenume · grupa ____ · © 2026
+</footer>
+
+<script>
+/* ============================================================
+   EDITEAZĂ DOAR ACEASTĂ LISTĂ.
+   snack  : linkul Snack (sau "" dacă nu există)
+   video  : fișier din folderul videos/ (sau link YouTube/Drive)
+   code   : folderul cu codul
+   zip    : arhiva din folderul archives/
+   ============================================================ */
+const LABS = [
+  { n:4,  title:"Consum API public: listă, detalii, favorite",
+    desc:"Listă de produse DummyJSON, ecran de detalii cu cerere proprie, căutare live, filtre pe categorii, favorite și pagină Acasă.",
+    tags:["API","fetch","Navigation","State"],
+    snack:"https://snack.expo.dev/@elana1/lab4_consum_api_public", video:"videos/lab04.mp4", code:"lab04", zip:"archives/lab04.zip" },
+  { n:5,  title:"Reîmprospătare, paginare, progres",
+    desc:"Catalog pe pagini (limit/skip), RefreshControl, trei feluri de erori tratate diferit, bară de progres și cronometru.",
+    tags:["API","FlatList","Hooks"],
+    snack:"https://snack.expo.dev/@elana1/lab5_reimprospatare_-incarcare_perechea1", video:"videos/lab05.mp4", code:"lab05", zip:"archives/lab05.zip" },
+  { n:6,  title:"Login și persistență",
+    desc:"Autentificare DummyJSON, token în SecureStore, sesiune restaurată la pornire, notițe salvate în AsyncStorage pe utilizator.",
+    tags:["Auth","Storage"],
+    snack:"https://snack.expo.dev/@elana1/lab6_aplicatie_cu_login", video:"videos/lab06.webm", code:"lab06", zip:"archives/lab06.zip" },
+  { n:7,  title:"Cameră și galerie: jurnal foto, QR",
+    desc:"Fotografii din galerie și de la cameră, grilă, păstrare în folder permanent, metadate salvate, scanner de coduri QR.",
+    tags:["Native","Camera","Files"],
+    snack:"https://snack.expo.dev/@elana1/lab7_aplicatie_camera", video:"videos/lab07.mp4", code:"lab07", zip:"archives/lab07.zip" },
+  { n:8,  title:"Hărți și geolocație",
+    desc:"Poziția utilizatorului, distanțe Haversine, cea mai apropiată cafenea (demo + OpenStreetMap), hartă cu marcaje și urmărire live.",
+    tags:["Native","Maps","Location"],
+    snack:"https://snack.expo.dev/@elana1/lab8_integare_harta_geolocatie", video:"videos/lab08.webm", code:"lab08", zip:"archives/lab08.zip" },
+  { n:9,  title:"Notificări locale programate",
+    desc:"Remindere după interval, la oră fixă și zilnice, canal Android, listă salvată și reconciliată cu sistemul.",
+    tags:["Native","Notifications"],
+    snack:"https://snack.expo.dev/@elana1/lab9_notificari_locale_programate", video:"videos/lab09.mp4", code:"lab09", zip:"archives/lab09.zip" },
+  { n:10, title:"Refactorizare cu Context API",
+    desc:"AuthContext, NotesContext cu useReducer și ThemeContext (light/dark); App.js redus la provideri.",
+    tags:["Context","Architecture"],
+    snack:"https://snack.expo.dev/@elana1/lab10_refactorizarea_context_api", video:"videos/lab10.webm", code:"lab10", zip:"archives/lab10.zip" },
+  { n:11, title:"EAS Build: APK instalabil",
+    desc:"Profil preview în eas.json, variabile de mediu, versionare automată, diagnosticare și gestionarea cheilor de semnare.",
+    tags:["Build","EAS"],
+    snack:"https://snack.expo.dev/@elana1/e15e18", video:"videos/lab11.webm", code:"lab11", zip:"archives/lab11.zip",
+    extra:{ label:"Build / APK", url:"" } }
+];
+/* ============================================================ */
+
+const grid = document.getElementById('grid');
+const filtersEl = document.getElementById('filters');
+const isEmbed = (v) => /^https?:\/\//.test(v);
+
+function link(href, text, cls=''){
+  return href ? `<a class="${cls}" href="${href}" target="_blank" rel="noopener">${text}</a>`
+              : `<a class="off ${cls}">${text}</a>`;
+}
+function media(l){
+  if(!l.video) return `<div class="media"><span class="num">${l.n}</span></div>`;
+  if(isEmbed(l.video)) return `<div class="media"><a href="${l.video}" target="_blank" rel="noopener" style="color:#fff;text-decoration:none"><span class="num">▶</span></a></div>`;
+  return `<div class="media"><video src="${l.video}" controls preload="metadata" playsinline></video></div>`;
+}
+function render(tag){
+  grid.innerHTML = LABS.filter(l => !tag || l.tags.includes(tag)).map(l => `
+    <article class="card">
+      ${media(l)}
+      <div class="body">
+        <h3>Lab ${l.n} · ${l.title}</h3>
+        <p>${l.desc}</p>
+        <div class="chips">${l.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+        <div class="links">
+          ${l.snack ? link(l.snack,'Snack ↗','primary') : ''}
+          ${l.extra ? link(l.extra.url, l.extra.label+' ↗','primary') : ''}
+          ${link(l.code,'Cod')}
+          ${link(l.zip,'Arhivă .zip')}
+        </div>
+      </div>
+    </article>`).join('');
+}
+const tags = [...new Set(LABS.flatMap(l => l.tags))];
+filtersEl.innerHTML = ['Toate',...tags].map((t,i)=>`<button data-t="${i?t:''}" class="${i?'':'on'}">${t}</button>`).join('');
+filtersEl.addEventListener('click', e => {
+  if(e.target.tagName !== 'BUTTON') return;
+  filtersEl.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === e.target));
+  render(e.target.dataset.t);
+});
+render('');
+</script>
+</body>
+</html>

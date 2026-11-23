@@ -1,0 +1,33 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+(async () => {
+  // Load the ES module without changing package.json to type:module.
+  const source = fs.readFileSync(path.join(__dirname, '../utils/buildInfo.js'), 'utf8');
+  const { formatVersion, envLabel, hostOf, runtimeLabel, show } = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
+  assert.equal(formatVersion('1.0.0', 3), '1.0.0 (3)');
+  assert.equal(formatVersion('1.0.0', null), '1.0.0');
+  assert.equal(envLabel('staging'), 'necunoscut (staging)');
+  assert.equal(hostOf('dummyjson.com'), null);
+  assert.equal(formatVersion(null, 1), '? (1)');
+  assert.equal(formatVersion('1.0.0', 0), '1.0.0 (0)');
+  assert.equal(formatVersion('1.0.0', ''), '1.0.0');
+  assert.equal(envLabel(' Preview '), 'preview');
+  assert.equal(envLabel(undefined), 'nesetat');
+  assert.equal(hostOf(' HTTPS://DummyJSON.COM:443/products?q=a '), 'dummyjson.com');
+  assert.equal(hostOf('https://[::1]:8080/x'), '[::1]');
+  assert.equal(hostOf('ftp://dummyjson.com'), null);
+  assert.equal(hostOf('https://user:password@host.example'), null);
+  assert.equal(hostOf('https://example.com:99999'), null);
+  assert.equal(hostOf('https://example.com.evil host/'), null);
+  assert.equal(show(false), 'false'); assert.equal(show(0), '0'); assert.equal(show(null), '—');
+  assert.equal(runtimeLabel('standalone'), 'Build de release (standalone)');
+  assert.equal(runtimeLabel('other'), 'Necunoscut: other');
+  const app = JSON.parse(fs.readFileSync(path.join(__dirname, '../app.json'))).expo;
+  const eas = JSON.parse(fs.readFileSync(path.join(__dirname, '../eas.json')));
+  assert.match(app.android.package, /^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$/);
+  assert.equal(eas.cli.appVersionSource, 'remote');
+  assert.equal(eas.build.preview.android.buildType, 'apk');
+  assert.equal(eas.build.preview.distribution, 'internal');
+  console.log('PASS: 20 pure-function assertions and 4 configuration assertions.');
+})().catch(error => { console.error(error); process.exitCode = 1; });

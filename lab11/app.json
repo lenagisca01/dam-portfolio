@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Build Info Lena",
+    "slug": "lab11-build-info",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.lenagisca.lab11buildinfo"
+    }
+  }
+}

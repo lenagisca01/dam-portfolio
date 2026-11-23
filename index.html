@@ -169,7 +169,8 @@ function render(tag){
         <div class="links">
           ${l.snack ? link(l.snack,'Snack ↗','primary') : ''}
           ${l.extra ? link(l.extra.url, l.extra.label+' ↗','primary') : ''}
-          ${l.zip ? `<a href="${l.zip}" download>Arhivă .zip</a>` : ''}
+          ${l.zip ? link('https://github.com/lenagisca01/dam-portfolio/blob/main/'+l.zip,'Deschide arhiva') : ''}
+          ${l.zip ? `<a href="${l.zip}" download>Descarcă .zip</a>` : ''}
         </div>
       </div>
     </article>`).join('');

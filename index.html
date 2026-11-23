@@ -113,35 +113,35 @@ const LABS = [
   { n:4,  title:"Consum API public: listă, detalii, favorite",
     desc:"Aplicație cu Stack Navigator care consumă API-ul public DummyJSON: listă de produse cu indicator de încărcare, ecran de detalii cu propria cerere fetch (se transmite doar id-ul), căutare live locală, filtre pe categorii, favorite pe un ecran separat (state ridicat în ProductStack) și pagină Acasă.",
     tags:["API","fetch","Navigation","State"],
-    snack:"https://snack.expo.dev/@elana1/lab4_consum_api_public", video:"videos/lab04.mp4", code:"https://github.com/lenagisca01/dam-portfolio/tree/main/lab04", zip:"archives/lab04.zip.zip" },
+    snack:"https://snack.expo.dev/@elana1/lab4_consum_api_public", video:"videos/lab04.mp4", code:"lab04", zip:"archives/lab04.zip.zip" },
   { n:5,  title:"Reîmprospătare, paginare, progres",
     desc:"Catalog încărcat pe pagini (limit/skip), cu RefreshControl, stări separate pentru încărcarea inițială, reîmprospătare și pagina următoare și trei tratamente de erori (ecran întreg, banner, subsol). Plus bară de progres animată prin stare și cronometru cu setInterval.",
     tags:["API","FlatList","Hooks"],
-    snack:"https://snack.expo.dev/@elana1/lab5_reimprospatare_-incarcare_perechea1", video:"videos/lab05.mp4", code:"https://github.com/lenagisca01/dam-portfolio/tree/main/lab05", zip:"archives/lab05.zip.zip" },
+    snack:"https://snack.expo.dev/@elana1/lab5_reimprospatare_-incarcare_perechea1", video:"videos/lab05.mp4", code:"lab05", zip:"archives/lab05.zip.zip" },
   { n:6,  title:"Login și persistență",
     desc:"Autentificare cu DummyJSON, token păstrat în SecureStore (AsyncStorage pe Web), sesiune restaurată prin /auth/me și comutare Login/Home după starea sesiunii. Notițe salvate în AsyncStorage, separat pe utilizator (indicatorii ready și loaded).",
     tags:["Auth","Storage"],
-    snack:"https://snack.expo.dev/@elana1/lab6_aplicatie_cu_login", video:"videos/lab06.webm", code:"https://github.com/lenagisca01/dam-portfolio/tree/main/lab06", zip:"archives/lab06.zip.zip" },
+    snack:"https://snack.expo.dev/@elana1/lab6_aplicatie_cu_login", video:"videos/lab06.webm", code:"lab06", zip:"archives/lab06.zip.zip" },
   { n:7,  title:"Cameră și galerie: jurnal foto, QR",
     desc:"Jurnal foto: poze din galerie și de la cameră (cu tratarea refuzului permisiunii), grilă și vizualizare mărită, copiere în folder permanent, metadate în AsyncStorage și ștergere coerentă. Scanner QR cu expo-camera; linkurile scanate se deschid doar după confirmare.",
     tags:["Native","Camera","Files"],
-    snack:"https://snack.expo.dev/@elana1/lab7_aplicatie_camera", video:"videos/lab07.mp4", code:"https://github.com/lenagisca01/dam-portfolio/tree/main/lab07", zip:"archives/lab07.zip.zip" },
+    snack:"https://snack.expo.dev/@elana1/lab7_aplicatie_camera", video:"videos/lab07.mp4", code:"lab07", zip:"archives/lab07.zip.zip" },
   { n:8,  title:"Hărți și geolocație",
     desc:"Poziția curentă cu expo-location (stări: acordat, refuzat, blocat), distanța Haversine și sortare după distanță. Cafenele demo și reale din OpenStreetMap (cu retragere la demo), hartă cu marcaje sincronizată cu lista și urmărirea poziției cu cleanup.",
     tags:["Native","Maps","Location"],
-    snack:"https://snack.expo.dev/@elana1/lab8_integare_harta_geolocatie", video:"videos/lab08.webm", code:"https://github.com/lenagisca01/dam-portfolio/tree/main/lab08", zip:"archives/lab08.zip.zip" },
+    snack:"https://snack.expo.dev/@elana1/lab8_integare_harta_geolocatie", video:"videos/lab08.webm", code:"lab08", zip:"archives/lab08.zip.zip" },
   { n:9,  title:"Notificări locale programate",
     desc:"Remindere cu expo-notifications: după interval, la oră exactă și zilnice. Canal Android creat înainte de permisiune, listă salvată în AsyncStorage și reconciliată cu notificările programate, reacție la atingerea notificării.",
     tags:["Native","Notifications"],
-    snack:"https://snack.expo.dev/@elana1/lab9_notificari_locale_programate", video:"videos/lab09.mp4", code:"https://github.com/lenagisca01/dam-portfolio/tree/main/lab09", zip:"archives/lab09.zip.zip" },
+    snack:"https://snack.expo.dev/@elana1/lab9_notificari_locale_programate", video:"videos/lab09.mp4", code:"lab09", zip:"archives/lab09.zip.zip" },
   { n:10, title:"Refactorizare cu Context API",
     desc:"Refactorizare fără schimbarea comportamentului: AuthContext, NotesContext (useReducer, context separat pentru stare și acțiuni) și ThemeContext (light/dark, salvat). App.js redus la provideri.",
     tags:["Context","Architecture"],
-    snack:"https://snack.expo.dev/@elana1/lab10_refactorizarea_context_api", video:"videos/lab10.webm", code:"https://github.com/lenagisca01/dam-portfolio/tree/main/lab10", zip:"archives/lab10.zip.zip" },
+    snack:"https://snack.expo.dev/@elana1/lab10_refactorizarea_context_api", video:"videos/lab10.webm", code:"lab10", zip:"archives/lab10.zip.zip" },
   { n:11, title:"EAS Build: APK instalabil",
     desc:"Proiect „Informații despre build”: profil preview în eas.json care produce APK instalabil, variabile EXPO_PUBLIC_* pe profil, autoIncrement, diagnosticare cu expo-doctor și expo export, gestionarea cheilor de semnare.",
     tags:["Build","EAS"],
-    snack:"https://snack.expo.dev/@elana1/e15e18", video:"videos/lab11.webm", code:"https://github.com/lenagisca01/dam-portfolio/tree/main/lab11", zip:"archives/lab11.zip.zip",
+    snack:"https://snack.expo.dev/@elana1/e15e18", video:"videos/lab11.webm", code:"lab11", zip:"archives/lab11.zip.zip",
     extra:{ label:"Build / APK", url:"" } }
 ];
 /* ============================================================ */
@@ -169,7 +169,7 @@ function render(tag){
         <div class="links">
           ${l.snack ? link(l.snack,'Snack ↗','primary') : ''}
           ${l.extra ? link(l.extra.url, l.extra.label+' ↗','primary') : ''}
-          ${l.zip ? link('https://github.com/lenagisca01/dam-portfolio/blob/main/'+l.zip,'Deschide arhiva') : ''}
+          ${link('https://github.com/lenagisca01/dam-portfolio/tree/main/'+l.code,'Cod')}
           ${l.zip ? `<a href="${l.zip}" download>Descarcă .zip</a>` : ''}
         </div>
       </div>

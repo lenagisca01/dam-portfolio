@@ -171,8 +171,7 @@ function render(tag){
         <div class="links">
           ${l.snack ? link(l.snack,'Snack ↗','primary') : ''}
           ${l.extra ? link(l.extra.url, l.extra.label+' ↗','primary') : ''}
-          ${link(l.code,'Cod')}
-          ${link(l.zip,'Arhivă .zip')}
+          ${l.zip ? `<a href="${l.zip}" download>Arhivă .zip</a>` : ''}
         </div>
       </div>
     </article>`).join('');
